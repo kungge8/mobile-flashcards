@@ -4,16 +4,27 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducer';
 import DeckList from './components/DeckList';
+import DeckView from './components/DeckView';
+import { StackNavigator } from 'react-navigation';
 
 export default class App extends React.Component {
   render() {
     return (
       <Provider store = { createStore(reducer)}>
-        <DeckList />
+        <DeckView />
       </Provider>
     );
   }
 }
+
+const Stack = StackNavigator ({
+  DeckList: {
+    screen: DeckList
+  },
+  DeckView: {
+    screen: DeckView
+  }
+});
 
 const styles = StyleSheet.create({
   container: {
